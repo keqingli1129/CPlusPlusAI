@@ -7,7 +7,7 @@ set(CMAKE_CUDA_ARCHITECTURES 50)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CUDA_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_PREFIX_PATH "./libtorch") # Adjust path as needed
+set(CMAKE_PREFIX_PATH "./libtorch117") # Adjust path as needed
 
 find_package(Torch REQUIRED)
 
