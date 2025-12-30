@@ -66,5 +66,18 @@ RUN apt-get update && apt-get install -y libhdf5-dev && \
 # # If you MUST have it, use the specialized 'caffe:gpu' image separately.
 
 # Final setup
+# 7. CREATE & SWITCH USER
+# Use the same User ID (UID) and Group ID (GID) as your host machine (usually 1000)
+ARG USER_ID=1000
+ARG GROUP_ID=1000
+
+RUN groupadd -g ${GROUP_ID} ethanli && \
+    useradd -m -u ${USER_ID} -g ethanli -s /bin/bash ethanli && \
+    # Give sudo access (optional but useful for dev)
+    usermod -aG sudo ethanli && \
+    echo "ethanli ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+# Set the active user
+USER ethanli
 WORKDIR /workspace
 CMD ["/bin/bash"]
